@@ -1,7 +1,6 @@
 <?php
 use App\Http\Dispatcher;
-use App\Models\Product;
-use App\Repositories\ProductDataMapper;
+
 
 require __DIR__ . "/../../vendor/autoload.php";
 
