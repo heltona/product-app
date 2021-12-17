@@ -1,7 +1,7 @@
 <?php
 namespace App\Utils;
 
-class SimpleDebuggingTool
+class SimpleDebugTool
 {
     public static function dump($data)
     {

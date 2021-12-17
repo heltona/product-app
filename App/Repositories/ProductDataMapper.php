@@ -47,8 +47,8 @@ class ProductDataMapper extends AbstractDataMapper
                 $this->persistProductCategoryRelationship($prod, $cat);
             }
             
-            $this->getLogger()->log("Product <" . $prod->getId() . "> updated successfully");
             $this->getDataSource()->commit();
+            $this->getLogger()->log("Product <" . $prod->getId() . "> updated successfully");
             
             return true;
         } catch (Exception $ex) {
@@ -112,6 +112,8 @@ class ProductDataMapper extends AbstractDataMapper
 
     public function findById(int $id): ?Product
     {
+        $this->getLogger()->log("Searching for product: " . $id);
+        
         $sql = "SELECT p.ID, p.NAME, p.SKU, p.QUANTITY,p.PRICE,p.DESCRIPTION, c.NAME AS CNAME,c.CODE
     FROM PRODUCT p 
     INNER JOIN PRODUCT_CATEGORY pc ON p.ID = pc.PRODUCT_ID 
@@ -152,6 +154,8 @@ class ProductDataMapper extends AbstractDataMapper
     public function deleteProduct(int $id): bool
     {
         try {
+            
+            $this->getLogger()->log("Deleting product: " . $id);
             $this->getDataSource()->beginTransaction();
 
             $sqlRel = "DELETE FROM PRODUCT_CATEGORY WHERE PRODUCT_ID = :ID";
@@ -164,7 +168,8 @@ class ProductDataMapper extends AbstractDataMapper
             $this->deleteProductTemplate($id, $sqlProd);
 
             $this->getDataSource()->commit();
-
+            $this->getLogger()->log("Product: " . $id . " deleted");
+            
             return true;
         } catch (Exception $ex) {
 
@@ -229,10 +234,7 @@ class ProductDataMapper extends AbstractDataMapper
         $stmt->bindParam(":QUANTITY", $qtd);
         $stmt->bindParam(":PRICE", $price);
         $stmt->bindParam(":SKU", $sku);
-        
-        
-        //SimpleDebuggingTool::dump();
-        
+                
         if (! $stmt->execute()) {
             throw new Exception("Insertion of Product failed");
         }
