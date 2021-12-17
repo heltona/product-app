@@ -13,12 +13,7 @@ spl_autoload_register(function ($className) {
 });
 
 
-$rep = new ProductDataMapper;
 
-
-
-
-exit();
 // just because we don't use framework, it is no reason enough to write transaction script
 $dispatcher = new Dispatcher();
 $dispatcher->run();
