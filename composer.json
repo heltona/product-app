@@ -1,0 +1,11 @@
+{
+    "name": "helton/product-app",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Helton Alves",
+            "email": "helton687@gmail.com"
+        }
+    ],
+    "require": {}
+}
