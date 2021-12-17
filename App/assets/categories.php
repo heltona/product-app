@@ -63,12 +63,12 @@
         </td>
       
         <td class="data-grid-td">
-           <span class="data-grid-cell-content"><?= $cat->getName()?></span>
+           <span class="data-grid-cell-content"><?= $cat->getCode()?></span>
         </td>
       
         <td class="data-grid-td">
           <div class="actions">
-            <div class="action edit"><span>Edit</span></div>
+            <div class="action edit"><a href="/category/edit?code=<?= $cat->getCode() ?>"><span>Edit</span></a></div>
             <div class="action delete"><button data-id="<?= $cat->getCode() ?>" data-page="category">Delete</button></div>
             
           </div>
