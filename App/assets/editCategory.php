@@ -44,7 +44,7 @@
     
       <div class="input-field">
         <label for="category-code" class="label">Category Code</label>
-        <input type="text" id="category-code" class="input-text" name="code" value="<?= $cat->getCode()?>" disabled/>
+        <input type="text" id="category-code" class="input-text" name="code" value="<?= $cat->getCode()?>" readonly="true"/>
         
       </div>
       <div class="input-field">
